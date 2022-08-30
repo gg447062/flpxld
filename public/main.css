@@ -166,23 +166,40 @@ select {
 }
 
 .border {
-  border: 1px solid black;
+  border: 1px solid white;
+}
+
+/* ===============================
+            Custom
+   =============================== */
+
+body {
+  background-color: black;
+  color: white;
 }
 
 footer {
-  /* height: 20vh; */
-  padding: 1em 0;
-  border-top: 1px solid black;
+  margin-top: 1em;
+  padding: 2em 0;
+  border-top: 1px solid white;
 }
 
 footer h2 {
+  text-transform: uppercase;
   padding-bottom: 0.5em;
   text-align: center;
 }
 
-button {
-  right: 2em;
+.button-wrapper {
   top: 2em;
+  right: 0;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+}
+
+button {
   padding: 1em 2em;
   border-radius: 1em;
   background-color: white;
@@ -194,15 +211,16 @@ button:hover {
   cursor: pointer;
 }
 
-button#ld-button {
-  top: 6em;
-}
-
 .about-section {
-  background-color: white;
+  background-color: black;
   padding: 2em;
   left: -50%;
   transition: all linear 500ms;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  border-right: 1px solid white;
 }
 
 div#flp-about {
@@ -218,16 +236,18 @@ div#ld-about {
 }
 
 #models {
-  height: 50vh;
+  height: 60vh;
+  width: 100vw;
 }
 
 #countdown {
-  padding: 1em;
-  font-size: 3em;
+  font-size: 1.5em;
+  background-color: black;
+  color: white;
 }
 
 #blurb {
-  padding: 1em;
+  padding: 4em;
 }
 
 #join {

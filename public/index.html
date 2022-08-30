@@ -15,34 +15,43 @@
     <link rel="stylesheet" href="./main.css" />
   </head>
   <body>
-    <main class="height-screen">
-      <div
-        class="height-screen width-50 absolute about-section border"
-        id="flp-about"
-      >
+    <main>
+      <div class="height-screen width-50 absolute about-section" id="flp-about">
         <h2>Floppy</h2>
+        <p>
+          FLOPPY is a Decentralized Audio Workstation (DAW) using blockchain
+          technology that encompasses the entire ecosystem of music creation. We
+          provide artist curated sample packs for the community to create music
+          that they can then listen to and sell on our NFT marketplace.
+        </p>
+        <p>
+          Think Splice, meets Bandcamp, with a custom metaverse MPC (CPU) to
+          help you get from point A to B. We want to grow our community in
+          conjunction with our DAW infrastructure and plugins, fostering a
+          symbiotic relationship between user and platform.
+        </p>
       </div>
-      <div
-        class="height-screen width-50 absolute about-section border"
-        id="ld-about"
-      >
+      <div class="height-screen width-50 absolute about-section" id="ld-about">
         <h2>Lexicon Devils</h2>
       </div>
-      <button class="absolute" id="flp-button">Floppy About</button>
-      <button class="absolute" id="ld-button">Lexicon Devils About</button>
-      <div class="border" id="models"></div>
-      <div
-        class="width-full show justify-center items-center dm-mono"
-        id="countdown"
-      >
-        <p id="days">00</p>
-        <p>:</p>
-        <p id="hours">00</p>
-        <p>:</p>
-        <p id="minutes">00</p>
-        <p>:</p>
-        <p id="seconds">00</p>
+      <div class="absolute button-wrapper">
+        <button id="flp-button">Floppy About</button>
+        <button id="ld-button">Lexicon Devils About</button>
+        <button
+          class="show justify-center items-center dm-mono border"
+          id="countdown"
+        >
+          <p id="days">00</p>
+          <p>:</p>
+          <p id="hours">00</p>
+          <p>:</p>
+          <p id="minutes">00</p>
+          <p>:</p>
+          <p id="seconds">00</p>
+        </button>
       </div>
+
+      <div id="models"></div>
       <div
         class="width-full hide justify-center items-center"
         id="join-wrapper"
@@ -101,6 +110,9 @@
         </div>
       </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.139.1/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/loaders/GLTFLoader.js"></script>
     <script src="./index.js" charset="utf-8"></script>
+    <script src="./models.js" charset="utf-8"></script>
   </body>
 </html>
