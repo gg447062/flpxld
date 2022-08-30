@@ -2,6 +2,7 @@ const container = document.getElementById('models');
 const clock = new THREE.Clock();
 let scene, camera, renderer, bassface, devil, mixer;
 let mode = 'increasing';
+let t = 0;
 
 function init() {
   const loader = new THREE.GLTFLoader();
@@ -34,9 +35,9 @@ function init() {
 
   loader.load('/assets/models/BassfaceLD.glb', (gltf) => {
     bassface = gltf.scene;
-    bassface.position.set(-16, -6, 0);
+    bassface.position.set(0, -6, 0);
     bassface.scale.set(1.5, 1.5, 1.5);
-    bassface.rotation.y = 0.5;
+    bassface.rotation.y = 0.2;
 
     mixer = new THREE.AnimationMixer(gltf.scene);
     const action = mixer.clipAction(gltf.animations[1]);
@@ -47,7 +48,8 @@ function init() {
 
   loader.load('/assets/models/devil-head.glb', (gltf) => {
     devil = gltf.scene;
-    devil.position.set(6, -0.5, 1);
+    // devil.position.set(6, -0.5, 1);
+    devil.position.set(10, -0.5, 1);
     devil.scale.set(0.45, 0.45, 0.45);
     const newMaterial = new THREE.MeshPhongMaterial({ color: 0x0328fc });
     devil.traverse((child) => {
@@ -57,7 +59,6 @@ function init() {
         child.receiveShadow = true;
       }
     });
-    console.log(devil.rotation.y);
     scene.add(devil);
   });
 }
@@ -69,6 +70,38 @@ function onWindowResize() {
   renderer.setSize(container.offsetWidth, container.offsetHeight);
 }
 
+function rotateDevil(speed) {
+  if (devil.rotation.y <= 0.4 && mode == 'increasing') {
+    devil.rotation.y += speed;
+  } else if (devil.rotation.y >= 0.4 && mode == 'increasing') {
+    mode = 'decreasing';
+    devil.rotation.y -= speed;
+  } else if (devil.rotation.y >= -0.8 && mode == 'decreasing') {
+    devil.rotation.y -= speed;
+  } else if (devil.rotation.y <= -0.8 && mode == 'decreasing') {
+    mode = 'increasing';
+    devil.rotation.y += speed;
+  }
+}
+
+function moveDevil() {
+  devil.rotation.y += 0.05;
+  t += 0.01;
+  devil.position.z = 20 * Math.cos(t) + 0;
+  devil.position.x = 20 * Math.sin(t) + 0;
+  // console.log(devil.position.z);
+  // if (devil.position.x >= -50 && devil.position.z >= -1) {
+  //   devil.position.x -= 0.5;
+  //   devil.position.z -= 0.1;
+  // } else if (devil.position.x >= -50 && devil.position.z < -1) {
+  //   devil.position.x -= 0.5;
+  //   devil.position.z += 0.1;
+  // } else {
+  //   devil.position.x = 50;
+  //   devil.position.z = 1;
+  // }
+}
+
 function animate() {
   requestAnimationFrame(animate);
   const delta = clock.getDelta();
@@ -78,17 +111,8 @@ function animate() {
   }
 
   if (devil) {
-    if (devil.rotation.y <= 0.4 && mode == 'increasing') {
-      devil.rotation.y += speed;
-    } else if (devil.rotation.y >= 0.4 && mode == 'increasing') {
-      mode = 'decreasing';
-      devil.rotation.y -= speed;
-    } else if (devil.rotation.y >= -0.8 && mode == 'decreasing') {
-      devil.rotation.y -= speed;
-    } else if (devil.rotation.y <= -0.8 && mode == 'decreasing') {
-      mode = 'increasing';
-      devil.rotation.y += speed;
-    }
+    // rotateDevil(speed);
+    moveDevil();
   }
 
   renderer.render(scene, camera);
@@ -96,28 +120,3 @@ function animate() {
 
 init();
 animate();
-
-// function loadModels(urls) {
-//   urls.forEach((url) => {
-//     loader.load(
-//       url,
-//       function (gltf) {
-//         console.log(gltf);
-//         scene.add(gltf.scene);
-//         gltf.animations; // Array<THREE.AnimationClip>
-//         gltf.scene; // THREE.Group
-//         gltf.scenes; // Array<THREE.Group>
-//         gltf.cameras; // Array<THREE.Camera>
-//         gltf.asset; // Object
-//       },
-//       // called while loading is progressing
-//       function (xhr) {
-//         console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-//       },
-//       // called when loading has errors
-//       function (error) {
-//         console.log('An error happened');
-//       }
-//     );
-//   });
-// }
