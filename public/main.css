@@ -129,6 +129,10 @@ select {
   width: 100vw;
 }
 
+.width-screen-50 {
+  width: 50vw;
+}
+
 .width-full {
   width: 100%;
 }
@@ -157,6 +161,10 @@ select {
   height: 100%;
 }
 
+.flex-grow {
+  flex-grow: 1;
+}
+
 .gap-c-1 {
   column-gap: 1em;
 }
@@ -180,14 +188,41 @@ body {
 
 footer {
   margin-top: 1em;
-  padding: 2em 0;
   border-top: 1px solid white;
 }
 
 footer h2 {
   text-transform: uppercase;
-  padding-bottom: 0.5em;
+  padding: 0.5em 0;
   text-align: center;
+  font-size: 2.5em;
+  border-bottom: 1px solid white;
+}
+
+.links-wrapper a {
+  padding: 4em 2em;
+  flex-grow: 1;
+  text-align: center;
+  color: white;
+}
+.links-wrapper a:visited {
+  color: white;
+}
+
+.links-wrapper a:not(:last-child) {
+  border-right: 1px solid white;
+}
+
+.links-wrapper a:hover p {
+  transform: rotate(0deg);
+  background-color: white;
+  border-radius: 1em;
+  color: black;
+}
+
+.links-wrapper a p {
+  transform: rotate(90deg);
+  transition: all 300ms;
 }
 
 .button-wrapper {
