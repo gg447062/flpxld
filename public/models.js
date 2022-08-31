@@ -4,6 +4,8 @@ let scene, camera, renderer, bassface, devil, mixer;
 let mode = 'increasing';
 let t = 0;
 
+const baseURL = 'https://dg3mov3znt8u.cloudfront.net/models';
+
 function init() {
   const loader = new THREE.GLTFLoader();
 
@@ -33,7 +35,7 @@ function init() {
 
   window.addEventListener('resize', onWindowResize, false);
 
-  loader.load('/assets/models/BassfaceLD.glb', (gltf) => {
+  loader.load(`${baseURL}/BassfaceLD.glb`, (gltf) => {
     bassface = gltf.scene;
     bassface.position.set(0, -6, 0);
     bassface.scale.set(1.5, 1.5, 1.5);
@@ -46,7 +48,7 @@ function init() {
     scene.add(bassface);
   });
 
-  loader.load('/assets/models/devil-head.glb', (gltf) => {
+  loader.load(`${baseURL}/devil-head.glb`, (gltf) => {
     devil = gltf.scene;
     // devil.position.set(6, -0.5, 1);
     devil.position.set(10, -0.5, 1);
@@ -88,18 +90,7 @@ function moveDevil() {
   devil.rotation.y += 0.05;
   t += 0.01;
   devil.position.z = 20 * Math.cos(t) + 0;
-  devil.position.x = 20 * Math.sin(t) + 0;
-  // console.log(devil.position.z);
-  // if (devil.position.x >= -50 && devil.position.z >= -1) {
-  //   devil.position.x -= 0.5;
-  //   devil.position.z -= 0.1;
-  // } else if (devil.position.x >= -50 && devil.position.z < -1) {
-  //   devil.position.x -= 0.5;
-  //   devil.position.z += 0.1;
-  // } else {
-  //   devil.position.x = 50;
-  //   devil.position.z = 1;
-  // }
+  devil.position.x = 30 * Math.sin(t) + 0;
 }
 
 function animate() {
