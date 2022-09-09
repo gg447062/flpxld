@@ -49,7 +49,7 @@ a:not([class]) {
 }
 
 a:visited {
-  color: blue;
+  color: white;
 }
 
 /* Make images easier to work with */
@@ -177,6 +177,10 @@ select {
   border: 1px solid white;
 }
 
+.bg-black {
+  background-color: black;
+}
+
 /* ===============================
             Custom
    =============================== */
@@ -186,9 +190,14 @@ body {
   color: white;
 }
 
+a {
+  color: white;
+}
+
 footer {
   margin-top: 1em;
   border-top: 1px solid white;
+  background-color: white;
 }
 
 footer h2 {
@@ -196,11 +205,14 @@ footer h2 {
   padding: 0.5em 0;
   text-align: center;
   font-size: 2.5em;
+  background-color: black;
   border-bottom: 1px solid white;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 footer div:first-child {
-  font-size: 3em;
+  font-size: 2.8em;
   padding: 0.5em 1em;
 }
 
@@ -221,6 +233,7 @@ footer div:not(:last-child) {
   transition: all 500ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
   font-size: 1.5em;
   background-color: black;
+  border-radius: 10px;
 }
 
 .links-wrapper a:visited {
@@ -236,48 +249,64 @@ footer div:not(:last-child) {
 }
 
 .button-wrapper {
-  top: 2em;
+  top: 0;
   right: 0;
-  padding: 2em;
   display: flex;
   flex-direction: column;
-  row-gap: 1em;
+  height: 60vh;
+  border: 1px solid white;
+  background-color: white;
 }
 
 button {
+  flex-grow: 1;
   padding: 1em 2em;
-  border-radius: 1em;
-  background-color: white;
-  border: 1px solid black;
-  box-shadow: 2px 2px black;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
 }
 
-button:hover {
+.button-wrapper button:not(:last-child) {
+  border-bottom: 1px solid white;
+  transition: all 500ms;
+}
+
+.button-wrapper button:not(:last-child):hover {
   cursor: pointer;
+  color: black;
+  background-color: white;
 }
 
 .about-section {
   background-color: black;
   padding: 2em;
-  left: -50%;
   transition: all linear 500ms;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+  row-gap: 1em;
   border-right: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
-div#flp-about {
-  z-index: 50;
-}
-
-div#ld-about {
+.ld-about {
+  left: -50%;
   z-index: 10;
 }
 
-.visible {
+.flp-about {
+  top: -50%;
+  z-index: 50;
+}
+
+.ld-about-visible {
   left: 0;
+}
+
+.flp-about-visible {
+  top: 0;
 }
 
 #models {
@@ -286,13 +315,16 @@ div#ld-about {
 }
 
 #countdown {
-  font-size: 1.5em;
+  font-size: 2em;
   background-color: black;
   color: white;
 }
 
 #blurb {
   padding: 4em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
 }
 
 #join {

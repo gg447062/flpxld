@@ -16,10 +16,11 @@ const show = {
 
 function toggleShow(el) {
   if (show[el.id]) {
-    el.classList.add('visible');
+    console.log(el.id);
+    el.classList.add(`${el.id}-visible`);
     show[el.id] = false;
   } else {
-    el.classList.remove('visible');
+    el.classList.remove(`${el.id}-visible`);
     show[el.id] = true;
   }
 }
@@ -33,7 +34,7 @@ flpButton.addEventListener('click', () => {
 });
 
 function countdown() {
-  const end = new Date(Date.UTC(2022, 8, 20, 22));
+  const end = new Date(Date.UTC(2022, 8, 24, 22));
 
   const second = 1000;
   const minute = second * 60;
