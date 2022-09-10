@@ -212,7 +212,7 @@ footer h2 {
 }
 
 footer div:first-child {
-  font-size: 2.8em;
+  font-size: 2em;
   padding: 0.5em 1em;
 }
 
@@ -245,7 +245,8 @@ footer div:not(:last-child) {
 }
 
 .links-wrapper a:hover {
-  border-radius: 0.8em;
+  background-color: white;
+  color: black;
 }
 
 .button-wrapper {
@@ -289,6 +290,20 @@ button {
   row-gap: 1em;
   border-right: 1px solid white;
   border-bottom: 1px solid white;
+}
+
+.close-button {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  border: 1px solid white;
+  padding: 0 5px;
+}
+
+.close-button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
 }
 
 .ld-about {

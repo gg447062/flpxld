@@ -1,5 +1,7 @@
-const flpButton = document.getElementById('flp-button');
-const ldButton = document.getElementById('ld-button');
+const showFlpButton = document.getElementById('show-flp-about');
+const showLdButton = document.getElementById('show-ld-about');
+const hideFlpButton = document.getElementById('hide-flp-about');
+const hideLdButton = document.getElementById('hide-ld-about');
 const flpAbout = document.getElementById('flp-about');
 const ldAbout = document.getElementById('ld-about');
 const days = document.getElementById('days');
@@ -14,23 +16,34 @@ const show = {
   'flp-about': false,
 };
 
-function toggleShow(el) {
-  if (show[el.id]) {
-    console.log(el.id);
+function showAbout(el) {
+  if (!show[el.id]) {
     el.classList.add(`${el.id}-visible`);
-    show[el.id] = false;
-  } else {
-    el.classList.remove(`${el.id}-visible`);
     show[el.id] = true;
   }
 }
 
-ldButton.addEventListener('click', () => {
-  toggleShow(ldAbout);
+function hideAbout(el) {
+  if (show[el.id]) {
+    el.classList.remove(`${el.id}-visible`);
+    show[el.id] = false;
+  }
+}
+
+showLdButton.addEventListener('click', () => {
+  showAbout(ldAbout);
 });
 
-flpButton.addEventListener('click', () => {
-  toggleShow(flpAbout);
+showFlpButton.addEventListener('click', () => {
+  showAbout(flpAbout);
+});
+
+hideLdButton.addEventListener('click', () => {
+  hideAbout(ldAbout);
+});
+
+hideFlpButton.addEventListener('click', () => {
+  hideAbout(flpAbout);
 });
 
 function countdown() {
